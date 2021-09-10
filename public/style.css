@@ -386,7 +386,7 @@ a img.aligncenter {
   border-top-right-radius: 100%;
   z-index: -1;
   transform-origin: left bottom;
-  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
 }
 .progress-br.shadow:after {
   content: '';
@@ -406,8 +406,8 @@ a img.aligncenter {
 }
 .progress-br.done .progress__item {
   opacity: 0;
-  -webkit-animation: done 3.1s;
-  transition: opacity 0.3s linear 3.1s;
+  animation: done 1.1s;
+  transition: opacity 0.3s linear 1.1s;
 }
 .progress-br.done .progress__item:before {
   display: none;
@@ -417,11 +417,11 @@ a img.aligncenter {
 }
 .progress-br.done:after {
   opacity: 0;
-  -webkit-animation: done 3.1s;
-  transition: opacity 0.15s linear 3.1s;
+  animation: done 1.1s;
+  transition: opacity 0.15s linear 1.1s;
 }
 
-@-webkit-keyframes done {
+@keyframes done {
   10% {
     transform: scale(1.1);
   }
@@ -446,11 +446,9 @@ a img.aligncenter {
   90% {
     transform: scale(0.99);
   }
-  100% {
-    transform: scale(1);
-  }
+ 
 }
-@-webkit-keyframes spin {
+@keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
   }

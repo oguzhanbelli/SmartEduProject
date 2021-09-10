@@ -16,6 +16,11 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ['student', 'teacher', 'admin'],
+    default: 'student',
+  },
 });
 
 UserSchema.pre('save', function (next) {
@@ -25,7 +30,6 @@ UserSchema.pre('save', function (next) {
     user.password = hash;
     next();
   });
-  
 });
 const User = mongoose.model('User', UserSchema);
 
