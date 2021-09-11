@@ -5,14 +5,12 @@
 	<!-- Start header -->
 	<%-include('partials/_navigation')%>
 	<!-- End header -->
-	
-	
 	        <div class="container">
             <div class="section-title text-center">
                 <h3 class="mt-5">LOGIN</h3>
 
             <div class="row">
-                <div class="col-xl-12 col-md-12 col-sm-12">
+                <div class="col-xl-12 col-md-10 col-sm-12">
                     <div class="contact_form">
                         <div id="message"></div>
                         <form  method="POST" action="/users/login">
@@ -34,9 +32,10 @@
             </div><!-- end row -->
         </div><!-- end container -->
 	 </div><!-- end container -->
+    
 	
 
-     <%-include('partials/_footer')%>
+   
       
 	<script src="js/timeline.min.js"></script>
 	<script>
@@ -47,3 +46,4 @@
 			visibleItems: 4
 		});
 	</script>
+      <%-include('partials/_footer')%>
