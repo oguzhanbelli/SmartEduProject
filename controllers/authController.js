@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { validationResult } = require('express-validator');
 const User = require('../models/User');
 const Category = require('../models/Category');
 const Course = require('../models/Course');
@@ -8,10 +9,17 @@ exports.createUser = async (req, res) => {
 
     res.status(201).redirect('/login');
   } catch (error) {
-    res.status(400).json({
-      status: 'fail',
-      error,
-    });
+    const errors = validationResult(req);
+    console.log(errors);
+    console.log(errors.array()[0].msg)
+
+
+    for(let i = 0; i<errors.array().length; i++){
+      req.flash("error",`${errors.array()[i].msg}`);
+    }
+    
+  
+    res.status(400).redirect('/register');
   }
 };
 
@@ -27,10 +35,12 @@ exports.loginUser = async (req, res) => {
         req.session.userID = user._id;
         res.status(200).redirect('/users/dashboard');
       } else {
-        res.status(400).json({ error: 'Invalid Password' });
+        req.flash("error","Invalid Password");
+        res.status(400).redirect('/login');
       }
     } else {
-      res.status(401).json({ error: 'User does not exist' });
+      req.flash("error","User is not exists");
+      res.status(400).redirect('/login');
     }
   } catch (error) {
     res.status(400).json({
